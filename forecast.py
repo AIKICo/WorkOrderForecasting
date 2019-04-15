@@ -30,16 +30,16 @@ m = Prophet()
 m.fit(d_df)
 
 future = m.make_future_dataframe(periods=90)
-future.tail()
+print(future.tail())
 forecast = m.predict(future)
-forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail()
+print(forecast[['ds', 'yhat', 'yhat_lower', 'yhat_upper']].tail())
 fig1 = m.plot(forecast)
 fig2 = m.plot_components(forecast)
 
 df_cv = cross_validation(m, horizon='90 days')
-df_cv.head()
+print(df_cv.head())
 df_p = performance_metrics(df_cv)
-df_p.head(5)
+print(df_p.head(5))
 
 fig3 = plot_cross_validation_metric(df_cv, metric='mape')
 
