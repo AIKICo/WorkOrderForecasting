@@ -6,7 +6,7 @@ from fbprophet.diagnostics import cross_validation, performance_metrics
 from fbprophet.plot import plot_cross_validation_metric
 
 if __name__ == '__main__':
-    df = pd.read_csv('workorder.csv')
+    df = pd.read_csv('Sale.csv')
     df = df[['Date', 'CO']].dropna()
     df['Date'] = pd.to_datetime(df['Date'])
     df = df.set_index('Date')
