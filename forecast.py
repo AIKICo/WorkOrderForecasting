@@ -21,12 +21,12 @@ if __name__ == '__main__':
 
     sns.lineplot(x='Date', y='CO', data=d_df, color='#76b900')
     ax.xaxis.set_major_locator(plt.MaxNLocator('auto'))
-    plt.title('WorkOrder Counts', fontsize=16)
+    plt.title('Sale Counts', fontsize=16)
     plt.xlabel('date', fontsize=16)
-    plt.ylabel('workorder counts', fontsize=16)
+    plt.ylabel('Sale counts', fontsize=16)
 
     d_df.columns = ['ds', 'y']
-    m = Prophet()
+    m = Prophet(yearly_seasonality=True, daily_seasonality=True)
     m.fit(d_df)
 
     future = m.make_future_dataframe(periods=90)
